@@ -1,0 +1,60 @@
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x"></script>
+</head>
+
+<body>
+    <center>
+        <div id="app">
+            <table style="background-color: rgb(179, 206, 206); font-size: xx-large;">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Edad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="profe in profes">
+                        <td>{{profe.id}}</td>
+                        <td>{{profe.name}}</td>
+                        <td>{{profe.apellido}}</td>
+                        <td>{{profe.edad}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- <ol>
+            <li v-for="book in books">
+                title: {{ book.title }}, price:{{book.price}}
+            </li>
+        </ol> -->
+        </div>
+    </center>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                profes: [{
+                    id: 1,
+                    name: 'JavaScript',
+                    apellido: "Lacoste",
+                    edad: 59
+                }, {
+                    id: 2,
+                    name: 'Vue',
+                    apellido: "Lacosta",
+                    edad: 47
+                }, {
+                    id: 2,
+                    name: 'ReactJS',
+                    apellido: "Lacostina",
+                    edad: 37
+                }]
+            }
+        })
+    </script>
+</body>
+
+</html>

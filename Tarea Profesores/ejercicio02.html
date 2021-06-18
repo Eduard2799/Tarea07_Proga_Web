@@ -1,0 +1,89 @@
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{title}}</h1>
+        <h4>Ingrese un valor</h4>
+
+        <input type="text" value="" v-model="valor">
+
+        <p>Porfavor seleccione la unidad de medida de la cantidad ingresada:</p>
+        <input type="radio" id="celsius" name="inicial" v-model="inicial" value="celsius">
+        <label for="male">Celsius</label><br>
+        <input type="radio" id="fahrenheit" name="inicial" v-model="inicial" value="fahrenheit">
+        <label for="female">Fahrenheit</label><br>
+        <input type="radio" id="rankine" name="inicial" v-model="inicial" value="rankine">
+        <label for="other">Rankine</label><br>
+        <input type="radio" id="kelvin" name="inicial" v-model="inicial" value="kelvin">
+        <label for="other">Kelvin</label>
+
+        <p>Porfavor seleccione la unidad de medida a convertir:</p>
+        <input type="radio" id="celsius" name="fin" v-model="final" value="celsius">
+        <label for="male">Celsius</label><br>
+        <input type="radio" id="fahrenheit" name="fin" v-model="final" value="fahrenheit">
+        <label for="female">Fahrenheit</label><br>
+        <input type="radio" id="rankine" name="fin" v-model="final" value="rankine">
+        <label for="other">Rankine</label><br>
+        <input type="radio" id="kelvin" name="fin" v-model="final" value="kelvin">
+        <label for="other">Kelvin</label>
+
+        <h4>Convertir de {{inicial}} a {{final}}</h4>
+
+        <br>
+        <button v-on:click="calcula">
+            Calcular
+          </button>
+
+        <h3>Resultado:</h3>
+        {{ resultado }}
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                valor: 0,
+                message: 'Hello Vue!',
+                title: 'Calculadora',
+                resultado: 0,
+                inicial: [],
+                final: []
+            },
+            methods: {
+                calcula: function() {
+                    if (this.inicial == "celsius" && this.final == "fahrenheit") {
+                        this.resultado = (this.valor * (9 / 5)) + 32;
+                    } else if (this.inicial == "celsius" && this.final == "rankine") {
+                        this.resultado = (this.valor * (9 / 5)) + 491.67;
+                    } else if (this.inicial == "celsius" && this.final == "kelvin") {
+                        this.resultado = parseInt(this.valor, 10) + 273.15;
+                    } else if (this.inicial == "fahrenheit" && this.final == "celsius") {
+                        this.resultado = (this.valor - 32) * (5 / 9);
+                    } else if (this.inicial == "fahrenheit" && this.final == "rankine") {
+                        this.resultado = parseInt(this.valor, 10) + (459.67);
+                    } else if (this.inicial == "fahrenheit" && this.final == "kelvin") {
+                        this.resultado = (this.valor - 32) * (5 / 9) + 273.15;
+                    } else if (this.inicial == "rankine" && this.final == "celsius") {
+                        this.resultado = (this.valor - 491.67) * (5 / 9);
+                    } else if (this.inicial == "rankine" && this.final == "fahrenheit") {
+                        this.resultado = (this.valor - 459.67);
+                    } else if (this.inicial == "rankine" && this.final == "kelvin") {
+                        this.resultado = (this.valor * (5 / 9));
+                    } else if (this.inicial == "kelvin" && this.final == "celsius") {
+                        this.resultado = (this.valor - (273.15));
+                    } else if (this.inicial == "kelvin" && this.final == "fahrenheit") {
+                        this.resultado = (this.valor - (273.15) * (9 / 5) + 32);
+                    } else if (this.inicial == "kelvin" && this.final == "rankine") {
+                        this.resultado = (this.valor * (1.8));
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
